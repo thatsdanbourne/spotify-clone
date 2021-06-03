@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <div class="container">
+    <div class="nav-main-container">
+      <sidebar />
+      <main-body />
+    </div>
+    <play-bar />
+  </div> -->
+  <router-view />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import Sidebar from "./components/Sidebar.vue";
+// import MainBody from "./components/MainBody.vue";
+// import PlayBar from "./components/PlayBar.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  // components: {
+  //   Sidebar,
+  //   MainBody,
+  //   PlayBar
+  // },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "./css/app.css";
 </style>

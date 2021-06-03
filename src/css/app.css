@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto&display=swap');
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.nav-main-container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 90px);
+}

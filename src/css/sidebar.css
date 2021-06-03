@@ -1,0 +1,131 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    background-color: black;
+    width: 230px;
+    height: 100%;
+    z-index: 2;
+}
+
+.sidebar img {
+    margin-left: 20px;
+    width: 60%;
+}
+
+.sidebar .buttons-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar .buttons-container span {
+    margin-left: 15px;
+}
+
+.sidebar .buttons-container button {
+    width: 95%;
+    height: 40px;
+    padding-left: 20px;
+    color: #b3b3b3;
+    font-size: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar .buttons-container button:hover {
+    color: white;
+}
+
+.sidebar .buttons-container button.active {
+    color: white;
+    background-color: #282828;
+
+}
+
+.sidebar .playlists {
+    margin: 25px 0 10px 25px;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.sidebar .playlists span {
+    color: #b3b3b3;
+    text-transform: uppercase;
+}
+
+.sidebar .playlists .create-playlist-liked-songs {
+    margin-top: 15px;
+}
+
+.sidebar .playlists .create-playlist-liked-songs .playlists-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 95%;
+    height: 40px;
+    color: white;
+    opacity: 0.7;
+    font-size: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar .playlists .create-playlist-liked-songs .playlists-button:hover {
+    opacity: 1;
+    color:white;
+}
+
+.sidebar .playlists .create-playlist-liked-songs .playlists-button .square-button-add {
+    margin-right: 20px;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    color: black;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .playlists .create-playlist-liked-songs .playlists-button .square-button-liked {
+    margin-right: 20px;
+    height: 30px;
+    width: 30px;
+    background: linear-gradient(135deg,#450af5,#c4efd9);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .user-playlists {
+    margin: 0 20px 0 20px;
+    border-top: 1px solid #282828;
+    overflow-y: scroll;
+}
+
+.sidebar .user-playlists ul li a {
+    color: #b3b3b3;
+    font-size: 14px;
+    line-height: 35px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.sidebar .user-playlists ul li a:hover {
+    color: white;
+}
