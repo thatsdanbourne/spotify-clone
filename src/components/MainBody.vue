@@ -14,26 +14,47 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { ref } from '@vue/reactivity';
+import { useStore } from "vuex";
 
 export default {
   name: "main-body",
-  data() {
-    return {
-      currentUser: null,
-    };
-  },
-  methods: {
-    ...mapActions("user", ["getCurrentUser"]),
-    getUser() {
-      this.getCurrentUser().then((r) => {
-        this.currentUser = r.data;
+
+  setup() {
+    const store = useStore();
+
+    const currentUser = ref(null);
+    const getCurrentUser = () => store.dispatch('user/getCurrentUser');
+    const getUser = () => {
+      getCurrentUser().then(r => {
+        currentUser.value = r.data;
       });
-    },
-  },
-  created() {
-    this.getUser();
-  },
+    };
+
+    getUser();
+
+    return {
+      currentUser,
+      getCurrentUser,
+      getUser
+    }
+  }
+  // data() {
+  //   return {
+  //     currentUser: null,
+  //   };
+  // },
+  // methods: {
+  //   ...mapActions("user", ["getCurrentUser"]),
+  //   getUser() {
+  //     this.getCurrentUser().then((r) => {
+  //       this.currentUser = r.data;
+  //     });
+  //   },
+  // },
+  // created() {
+  //   this.getUser();
+  // },
 };
 </script>
 

@@ -6,19 +6,18 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { useStore } from "vuex";
 import router from "../router";
-import store from "./../store";
 
 export default {
   name: "Login",
-  methods: {
-    ...mapActions("auth", ["setAccessToken", "setRefreshToken"]),
-    getSpotifyAuth() {
-      store.dispatch("auth/login");
-    },
-  },
-  created() {
+
+  setup() {
+    const store = useStore();
+
+    const setAccessToken = (access_token) => store.dispatch("auth/setAccessToken", access_token);
+    const setRefreshToken = (refresh_token) => store.dispatch("auth/setRefreshToken", refresh_token);
+
     const data = window.location.hash
       .substring(1)
       .split("&")
@@ -32,10 +31,44 @@ export default {
     if (data.error) {
       console.log(data.error);
     } else if (data.access_token) {
-      this.setAccessToken(data.access_token);
+      setAccessToken(data.access_token);
       router.push("/");
     }
+
+    const getSpotifyAuth = () => {
+      store.dispatch("auth/login");
+    };
+
+    return {
+      setAccessToken,
+      setRefreshToken,
+      getSpotifyAuth
+    };
   },
+  // methods: {
+  //   ...mapActions("auth", ["setAccessToken", "setRefreshToken"]),
+  //   getSpotifyAuth() {
+  //     store.dispatch("auth/login");
+  //   },
+  // },
+  // created() {
+  //   const data = window.location.hash
+  //     .substring(1)
+  //     .split("&")
+  //     .reduce((initial, item) => {
+  //       let parts = item.split("=");
+  //       initial[parts[0]] = decodeURIComponent(parts[1]);
+
+  //       return initial;
+  //     }, {});
+
+  //   if (data.error) {
+  //     console.log(data.error);
+  //   } else if (data.access_token) {
+  //     this.setAccessToken(data.access_token);
+  //     router.push("/");
+  //   }
+  // },
 };
 </script>
 

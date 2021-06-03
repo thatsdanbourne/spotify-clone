@@ -43,30 +43,56 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { ref } from "vue";
+import { useStore } from "vuex";
 
 export default {
   name: "sidebar",
-  data() {
-    return {
-      playlists: [],
-    };
-  },
-  methods: {
-    ...mapActions("playlists", ["getCurrentUserPlaylists"]),
-    async getPlaylists() {
+
+  setup() {
+    const store = useStore();
+
+    const playlists = ref([]);
+    const getCurrentUserPlaylists = () =>
+      store.dispatch("playlists/getCurrentUserPlaylists");
+    const getPlaylists = () => {
       try {
-        this.getCurrentUserPlaylists().then((r) => {
-          this.playlists = r.data;
+        getCurrentUserPlaylists().then((r) => {
+          playlists.value = r.data;
         });
       } catch (e) {
         console.log(e);
       }
-    },
-  },
-  created() {
-    this.getPlaylists();
-  },
+    };
+
+    getPlaylists();
+    return {
+      playlists,
+      getCurrentUserPlaylists,
+      getPlaylists,
+    };
+  }
+
+  // data() {
+  //   return {
+  //     playlists: [],
+  //   };
+  // },
+  // methods: {
+  //   ...mapActions("playlists", ["getCurrentUserPlaylists"]),
+  //   async getPlaylists() {
+  //     try {
+  //       this.getCurrentUserPlaylists().then((r) => {
+  //         this.playlists = r.data;
+  //       });
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   },
+  // },
+  // created() {
+  //   this.getPlaylists();
+  // },
 };
 </script>
 
