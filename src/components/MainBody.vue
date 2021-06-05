@@ -1,60 +1,21 @@
 <template>
   <div class="main-body">
-    <div class="top-bar">
-      <div class="back-forward-buttons">
-        <button><i class="fas fa-chevron-left"></i></button>
-        <button><i class="fas fa-chevron-right"></i></button>
-      </div>
-      <div v-if="currentUser" class="user-widget">
-        <img :src="currentUser.images[0].url" alt="">
-        <div>{{ currentUser.display_name }}</div>
-      </div>
+    <div class="playlist-grid">
+      <playlist-panel v-for="p in playlists.items" :key="p.id" :name="p.name" :description="p.description" :imageUrl="p.images[0].url"/>
+      <!-- <playlist-panel :id="playlists.items[0].id" :name="playlists.items[0].name" :description="playlists.items[0].description" :imageUrl="playlists.items[0].images[0].url"/> -->
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from '@vue/reactivity';
-import { useStore } from "vuex";
+import PlaylistPanel from '../components/PlaylistPanel';
 
 export default {
   name: "main-body",
-
-  setup() {
-    const store = useStore();
-
-    const currentUser = ref(null);
-    const getCurrentUser = () => store.dispatch('user/getCurrentUser');
-    const getUser = () => {
-      getCurrentUser().then(r => {
-        currentUser.value = r.data;
-      });
-    };
-
-    getUser();
-
-    return {
-      currentUser,
-      getCurrentUser,
-      getUser
-    }
-  }
-  // data() {
-  //   return {
-  //     currentUser: null,
-  //   };
-  // },
-  // methods: {
-  //   ...mapActions("user", ["getCurrentUser"]),
-  //   getUser() {
-  //     this.getCurrentUser().then((r) => {
-  //       this.currentUser = r.data;
-  //     });
-  //   },
-  // },
-  // created() {
-  //   this.getUser();
-  // },
+  props: ["playlists"],
+  components: {
+    PlaylistPanel
+  },
 };
 </script>
 

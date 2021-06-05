@@ -43,34 +43,11 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { useStore } from "vuex";
-
 export default {
   name: "sidebar",
-
+  props: ['playlists'],
   setup() {
-    const store = useStore();
-
-    const playlists = ref([]);
-    const getCurrentUserPlaylists = () =>
-      store.dispatch("playlists/getCurrentUserPlaylists");
-    const getPlaylists = () => {
-      try {
-        getCurrentUserPlaylists().then((r) => {
-          playlists.value = r.data;
-        });
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    getPlaylists();
-    return {
-      playlists,
-      getCurrentUserPlaylists,
-      getPlaylists,
-    };
+    
   }
 
   // data() {

@@ -17,3 +17,13 @@
     width: 100%;
     height: calc(100vh - 90px);
 }
+
+.main-view-container {
+    position: relative;
+    background-image: linear-gradient(rgba(0,0,0,.6),#121212);
+    width: calc(100vw - 230px);
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+}
