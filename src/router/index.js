@@ -3,6 +3,9 @@ import store from './../store';
 
 import Login from '../views/login.vue';
 import Home from '../views/home.vue';
+import Playlists from '../components/MainBody.vue';
+import PlaylistSongs from '../components/PlaylistSongs.vue';
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -11,10 +14,29 @@ const router = createRouter({
             path: "/login",
             name: 'Login',
             component: Login
-        }, {
+        }, 
+        {
             path: '/',
+            redirect: '/home/playlists'
+        },
+        {
+            path: '/home',
             name: 'Home',
-            component: Home
+            component: Home,
+            children: [
+                {
+                    path: 'playlists',
+                    component: Playlists,
+                    props: {
+                        playlists: Array
+                    }
+                },
+                {
+                    path: 'playlists/:playlistID',
+                    name: 'playlistSongs',
+                    component: PlaylistSongs
+                }
+            ]
         }
     ]
 });

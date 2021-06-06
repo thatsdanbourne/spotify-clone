@@ -1,9 +1,11 @@
 <template>
+<router-link :to="{ name: 'playlistSongs', params: {playlistID: playlistID} }">
     <div class="playlist-container">
         <img class="playlist-image" :src="imageUrl" alt="playlist image">
         <h3 class="playlist-name"> {{ name }}</h3>
         <p class="playlist-desc" v-html="descriptionText"></p>
     </div>
+</router-link>
 </template>
 
 <script>

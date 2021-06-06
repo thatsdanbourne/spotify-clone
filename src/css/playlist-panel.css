@@ -4,8 +4,10 @@
     padding: 10px;
     margin: 20px;
     width: 250px;
+    height: 400px;
     cursor: pointer;
     transition: background-color .3s ease;
+    overflow: hidden;
 }
 
 .playlist-container:hover {

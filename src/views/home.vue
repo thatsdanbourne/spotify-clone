@@ -4,7 +4,8 @@
       <sidebar :playlists="playlists" />
       <div class="main-view-container">
         <top-bar />
-        <main-body :playlists="playlists" />
+        <router-view :playlists="playlists"/>
+        <!-- <main-body :playlists="playlists" /> -->
       </div>
     </div>
     <play-bar />
@@ -16,13 +17,12 @@ import { useStore } from "vuex";
 import { ref } from "@vue/reactivity";
 import topBar from "../components/Header";
 import sidebar from "../components/Sidebar";
-import mainBody from "../components/MainBody";
 import playBar from "../components/PlayBar";
+
 export default {
   components: {
     topBar,
     sidebar,
-    mainBody,
     playBar,
   },
 

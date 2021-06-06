@@ -36,6 +36,23 @@ export default {
                     reject(err);
                 });
             });
+        },
+        async getTracksForPlaylist({rootGetters}, playlistID) {
+            return new Promise((resolve, reject) => {
+                axios.get(
+                    `https://api.spotify.com/v1/playlists/${playlistID}/tracks`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${rootGetters['auth/getAccessToken']}`
+                        },
+                    }
+                ).then(r => {
+                    resolve(r);
+                })
+                .catch(err => {
+                    reject(err);
+                })
+            })
         }
     }
 }
