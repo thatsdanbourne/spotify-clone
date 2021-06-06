@@ -1,12 +1,14 @@
 .main-body {
     width: 100%;
-    height: calc(100% - 60px);
+    /* height: calc(100% - 60px); */
+    height: 100%;
     margin: 0 25px;
     padding: 20px 0;
     overflow-y: scroll;
 }
 
 .playlist-grid {
+    margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
 }

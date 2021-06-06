@@ -4,6 +4,12 @@
     padding: 10px;
     margin: 20px;
     width: 250px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.playlist-container:hover {
+    background-color: #282828;
 }
 
 .playlist-container .playlist-image {
@@ -12,6 +18,7 @@
     border-radius: 2px;
     margin-bottom: 20px;
     object-fit: cover;
+    box-shadow: 0 3px 3px black;
 }
 
 .playlist-container .playlist-name {
